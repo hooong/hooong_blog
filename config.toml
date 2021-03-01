@@ -3,7 +3,7 @@ baseURL = "http://example.org/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "TIL"
+title = "hooong's  TIL"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "uBlogger"
@@ -22,7 +22,7 @@ theme = "uBlogger"
     name = "Posts"
     url = "/posts/"
     # title will be shown when you hover on this menu link
-    title = ""
+    title = "hooong's  TIL"
     weight = 1
   [[menu.main]]
     identifier = "tags"
@@ -30,7 +30,7 @@ theme = "uBlogger"
     post = ""
     name = "Tags"
     url = "/tags/"
-    title = ""
+    title = "hooong's  TIL"
     weight = 2
   [[menu.main]]
     identifier = "categories"
@@ -38,7 +38,7 @@ theme = "uBlogger"
     post = ""
     name = "Categories"
     url = "/categories/"
-    title = ""
+    title = "hooong's  TIL"
     weight = 3
 
 # Markup related configuration in Hugo
