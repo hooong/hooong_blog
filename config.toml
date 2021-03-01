@@ -11,6 +11,27 @@ theme = "uBlogger"
 [params]
   # uBlogger theme version
   version = "1.3.X"
+  [params.home.profile]
+    enable = true
+    # Gravatar Email for preferred avatar in home page
+    gravatarEmail = ""
+    # URL of avatar shown in home page
+    avatarURL = "/images/avatar.jpeg"
+    # title shown in home page (HTML format is supported)
+    title = "홍석준 | Hong SeokJun"
+    # subtitle shown in home page (HTML format is supported)
+    subtitle = "BackEnd Engineer (Birdview)"
+    # whether to use typeit animation for subtitle
+    typeit = false
+    # whether to show social links
+    social = true
+    # disclaimer (HTML format is supported)
+    disclaimer = ""
+  [params.social]
+    GitHub = "hooongsj"
+    Linkedin = "%EC%84%9D%EC%A4%80-%ED%99%8D-5733541b7/"
+    Instagram = "hooong_sj"
+    Email = "tjrwns0529@gmail.com"
 
 [menu]
   [[menu.main]]
