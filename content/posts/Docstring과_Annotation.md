@@ -1,11 +1,10 @@
 ---
 title: "[Python]Docstring과Annotation"
 date: 2021-03-06T21:50:13+09:00
+tags: ["Python"]
 description: "Python의 Docstring과 Annotation에 대한 정리"
 ---
  훌륭한 코드는 그 자체로 (주석이 없어도) 자명하지만 문서화 또한 잘 되어있어야한다. 문서화라고해서 주석이 주렁주렁 달린 코드를 말하는 것이 아닌 문서화를 통해 데이터 타입이 무엇인지 설명하고 때에따라 예제를 제공하는 것을 목표로 한다. 
-
-<br>
 
 ## Docstring
 
@@ -17,8 +16,6 @@ description: "Python의 Docstring과 Annotation에 대한 정리"
 - 코드의 특정 컴포넌트(module, class, method, function)에 대한 문서화이다.
 - 가능한 많은 docstring을 추가하는 것이 권장된다.
 - [Sphinx(스핑크스)](https://tech.ssut.me/start-python-documentation-using-sphinx/)를 실행하여 autodoc 익스텐션을 사용하면 자동으로 문서를 만들 수 있다.
-
-<br>
 
 #### Example
 
@@ -44,8 +41,6 @@ description: "Python의 Docstring과 Annotation에 대한 정리"
 - `"""{docstring}"""` : 리터럴 문자열로 특정 컴포넌트에 대한 문서화를 작성
 - `__doc__` : 해당 속성을 통해 docstring에 접근 가능
 
-<br>
-
 ```python
 # dict.update에 대한 docstring 예제
 >>> dict.update.__doc__
@@ -54,8 +49,6 @@ If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]\n
 If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v\n
 In either case, this is followed by: for k in F:  D[k] = F[k]'
 ```
-
-<br>
 
 ## Annotation
 
@@ -67,8 +60,6 @@ Annotation에 대해 간단히 정리해보면 다음과 같다.
 
 - 변수의 예상 타입을 지정하여 힌트를 줄 수 있다. (타입 뿐만 아니라 어떤 형태의 메타데이터라도 지정할 수 있다.)
 - annotation정보를 사용하여 문서 생성, 유효성 검증, 타입 체크를 할 수 있다.
-
-<br>
 
 #### Example
 
@@ -105,13 +96,9 @@ Annotation에 대해 간단히 정리해보면 다음과 같다.
 - `->` : 함수의 반환값에 대한 annotation을 달 수 있다.
 - `__annotations__` : 해당 속성을 통해 annotation에 접근 가능
 
-<br>
-
 ## Annotation은 Docstring을 대체?
 
 Docstring에 포함된 정보의 일부는 어노테이션으로 이동시킬 수 있는 것은 사실이지만, docstring을 통해 보다 나은 문서화를 위한 여지를 남겨두어야 한다. 동적 데이터 타입과 중첩 데이터 타입의 경우 예상 데이터의 예제를 제공하여 어떤 형태의 데이터를 다루는지 제공하는 것이 좋다는 것이다. 
-
-<br>
 
 ```python
 def data_from_response(response: dict) -> dict:
