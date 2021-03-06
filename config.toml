@@ -179,7 +179,7 @@ theme = "uBlogger"
 
   # Social config about the author
   [params.social]
-    GitHub = "hooongsj"
+    GitHub = "hooong"
     Linkedin = "%EC%84%9D%EC%A4%80-%ED%99%8D-5733541b7/"
     Instagram = "hooong_sj"
     Email = "tjrwns0529@gmail.com"
