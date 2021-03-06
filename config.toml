@@ -185,6 +185,29 @@ theme = "uBlogger"
     Instagram = "hooong_sj"
     Email = "tjrwns0529@gmail.com"
 
+  # {{< version 1.1.0 new >}} Post display settings on the page
+  [params.summary]
+    # {{< version 1.1.0 new >}} Display previews on the page of posts
+    hiddenImage = false
+    # {{< version 1.1.0 new >}} Allows you to hide the description
+    hiddenDescription = false
+    # {{< version 1.1.0 new >}} Allows you to hide the title
+    hiddenTitle = false
+  # {{< version 1.1.0 new >}} Tag display settings
+  [params.summary.tags]
+    # {{< version 1.1.0 new >}} One of the options for displaying tags
+    theme = "image"
+    # {{< version 1.1.0 new >}} Text color
+    color = "white"
+    # {{< version 1.1.0 new >}} Backing color
+    background = "black"
+    # {{< version 1.1.0 new >}} Tag transparency
+    transparency = 0.9
+    # {{< version 1.2.0 new >}} Fasting time display
+  # [params.timeAgo]
+  #   enable = "true"
+  #   #lang = "en"
+
   # {{< version 0.2.0 changed >}} Page config
   [params.page]
     # {{< version 1.0.0 new >}} main subject for articles, by default classic. {{< link "/theme-documentation-content/#theme" "more on themes" >}}}
@@ -209,36 +232,14 @@ theme = "uBlogger"
     linkToMarkdown = true
     # {{< version 0.2.4 >}} whether to show the full text content in RSS
     rssFullText = false
-    # {{< version 1.1.0 new >}} Post display settings on the page
-    [params.summary]
-      # {{< version 1.1.0 new >}} Display previews on the page of posts
-      hiddenImage = true
-      # {{< version 1.1.0 new >}} Allows you to hide the description
-      hiddenDescription = false
-      # {{< version 1.1.0 new >}} Allows you to hide the title
-      hiddenTitle = false
-    # {{< version 1.1.0 new >}} Tag display settings
-    [params.summary.tags]
-      # {{< version 1.1.0 new >}} One of the options for displaying tags
-      theme = "image"
-      # {{< version 1.1.0 new >}} Text color
-      color = "white"
-      # {{< version 1.1.0 new >}} Backing color
-      background = "black"
-      # {{< version 1.1.0 new >}} Tag transparency
-      transparency = 0.9
-    # {{< version 1.2.0 new >}} Fasting time display
-    [params.timeAgo]
-      enable = "false"
-      # lang = "en"
     # {{< version 0.2.0 >}} Table of the contents config
     [params.page.toc]
       # whether to enable the table of the contents
       enable = true
       # {{< version 0.2.9 >}} whether to keep the static table of the contents in front of the post
-      keepStatic = true
+      keepStatic = false
       # whether to make the table of the contents in the sidebar automatically collapsed
-      auto = true
+      auto = false
     # {{< version 0.2.0 changed >}} {{< link "https://katex.org/" KaTeX >}} mathematical formulas
     [params.page.math]
       enable = true
