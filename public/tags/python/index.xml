@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Python - Tag - hooong&#39;s  TIL</title>
+        <link>http://example.org/tags/python/</link>
+        <description>Python - Tag - hooong&#39;s  TIL</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 06 Mar 2021 21:50:13 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>[Python]Docstring과Annotation</title>
+    <link>http://example.org/docstring%EA%B3%BC_annotation/</link>
+    <pubDate>Sat, 06 Mar 2021 21:50:13 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>http://example.org/docstring%EA%B3%BC_annotation/</guid>
+    <description><![CDATA[<p>Python의 Docstring과 Annotation에 대한 정리</p>]]></description>
+</item></channel>
+</rss>
