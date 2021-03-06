@@ -1,6 +1,7 @@
 ---
 title: "[Python]Docstring과Annotation"
 date: 2021-03-06T21:50:13+09:00
+description: "Python의 Docstring과 Annotation에 대한 정리"
 ---
  훌륭한 코드는 그 자체로 (주석이 없어도) 자명하지만 문서화 또한 잘 되어있어야한다. 문서화라고해서 주석이 주렁주렁 달린 코드를 말하는 것이 아닌 문서화를 통해 데이터 타입이 무엇인지 설명하고 때에따라 예제를 제공하는 것을 목표로 한다. 
 
