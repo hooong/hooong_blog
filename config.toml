@@ -3,7 +3,6 @@ baseURL = "http://example.org/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "hooong's  TIL"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "uBlogger"
