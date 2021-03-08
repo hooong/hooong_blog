@@ -1,6 +1,7 @@
 baseURL = "http://example.org/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
+title = "hooong's TIL"
 # language code
 languageCode = "en"
 
