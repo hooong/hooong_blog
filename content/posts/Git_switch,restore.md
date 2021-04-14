@@ -182,7 +182,7 @@ $ git restore --staged test.txt
 
 # 마무리하며...
 
-Git의 `--help`에서도 `checkout` 명령어를 삭제한 것을 보니 `switch`와 `restore`의 사용을 권장하고 있다는 것을 알 수 있었고, 본인도 기존에 `checkout` 명령어를 사용하였기에 `switch`와 `restore`를 최대한 의식적으로 사용해보고 있는데 확실히 기능이 분리되어 명시적으로 사용할 수 있어 좋다고 느껴졌다. 이 글을 읽으시는 여러분들도 익숙한 `chechout`을 대신하여  `switch`와 `restore`를 사용해보는 것을 추천합니다!
+Git의 `--help`에서도 `checkout` 명령어를 삭제한 것을 보니 `switch`와 `restore`의 사용을 권장하고 있다는 것을 알 수 있었고, 본인도 기존에 `checkout` 명령어를 사용하였기에 `switch`와 `restore`를 최대한 의식적으로 사용해보고 있는데 확실히 기능이 분리되어 명시적으로 사용할 수 있어 좋다고 느껴졌다. 이 글을 읽으시는 여러분들도 익숙한 `checkout`을 대신하여  `switch`와 `restore`를 사용해보는 것을 추천합니다!
 
 <br>
 
