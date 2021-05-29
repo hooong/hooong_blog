@@ -328,7 +328,7 @@ theme = "uBlogger"
   
     # {{< version 1.1.0 changed >}} Comment config
     [params.comment]
-      enable = false
+      enable = true
       # {{< version 1.0.0 new >}}
       # {{< link "https://github.com/umputun/remark42/" Remark42 >}} comment config
       [params.comment.remark42]
@@ -346,9 +346,9 @@ theme = "uBlogger"
       # {{< link "https://disqus.com/" Disqus >}} comment config
       [params.comment.disqus]
         # {{< version 0.1.1 >}}
-        enable = false
+        enable = true
         # Disqus shortname to use Disqus in posts
-        shortname = ""
+        shortname = "hooongstil"
       # {{< link "https://github.com/gitalk/gitalk" Gitalk >}} comment config
       [params.comment.gitalk]
         # {{< version 0.1.1 >}}
@@ -400,11 +400,11 @@ theme = "uBlogger"
         enable = false
       # {{< version 0.2.5 >}} {{< link "https://utteranc.es/" "Utterances" >}} comment config
       [params.comment.utterances]
-        enable = false
+        enable = true
         # owner/repo
-        repo = ""
+        repo = "hooong/hooong.github.io"
         issueTerm = "pathname"
-        label = ""
+        label = "comment"
         lightTheme = "github-light"
         darkTheme = "github-dark"
 
