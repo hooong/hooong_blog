@@ -402,7 +402,7 @@ theme = "uBlogger"
       [params.comment.utterances]
         enable = true
         # owner/repo
-        repo = "hooong/hooong_blog"
+        repo = "hooong/hooong.github.io"
         issueTerm = "pathname"
         lightTheme = "github-light"
         darkTheme = "github-dark"
