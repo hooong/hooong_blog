@@ -618,7 +618,7 @@ class Theme {
                         theme: this.isDark ? utterancesConfig.darkTheme : utterancesConfig.lightTheme,
                     };
                     const iframe = document.querySelector('.utterances-frame');
-                    iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+                    iframe.contentWindow.postMessage(message, 'https://github.com');
                 });
                 this.switchThemeEventSet.add(this._utterancesOnSwitchTheme);
             }
