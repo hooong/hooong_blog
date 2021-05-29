@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://hooong.github.io/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
 title = "hooong's TIL"
@@ -346,7 +346,7 @@ theme = "uBlogger"
       # {{< link "https://disqus.com/" Disqus >}} comment config
       [params.comment.disqus]
         # {{< version 0.1.1 >}}
-        enable = true
+        enable = false
         # Disqus shortname to use Disqus in posts
         shortname = "hooongstil"
       # {{< link "https://github.com/gitalk/gitalk" Gitalk >}} comment config
@@ -404,7 +404,6 @@ theme = "uBlogger"
         # owner/repo
         repo = "hooong/hooong.github.io"
         issueTerm = "pathname"
-        label = "comment"
         lightTheme = "github-light"
         darkTheme = "github-dark"
 
