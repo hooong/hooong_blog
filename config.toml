@@ -328,7 +328,7 @@ theme = "uBlogger"
   
     # {{< version 1.1.0 changed >}} Comment config
     [params.comment]
-      enable = true
+      enable = false
       # {{< version 1.0.0 new >}}
       # {{< link "https://github.com/umputun/remark42/" Remark42 >}} comment config
       [params.comment.remark42]
