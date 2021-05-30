@@ -400,7 +400,7 @@ theme = "uBlogger"
         enable = false
       # {{< version 0.2.5 >}} {{< link "https://utteranc.es/" "Utterances" >}} comment config
       [params.comment.utterances]
-        enable = true
+        enable = false
         # owner/repo
         repo = "hooong/hooong.github.io"
         issueTerm = "pathname"
