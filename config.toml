@@ -346,9 +346,9 @@ theme = "uBlogger"
       # {{< link "https://disqus.com/" Disqus >}} comment config
       [params.comment.disqus]
         # {{< version 0.1.1 >}}
-        enable = false
+        enable = true
         # Disqus shortname to use Disqus in posts
-        shortname = "hooongstil"
+        shortname = "hooong"
       # {{< link "https://github.com/gitalk/gitalk" Gitalk >}} comment config
       [params.comment.gitalk]
         # {{< version 0.1.1 >}}
