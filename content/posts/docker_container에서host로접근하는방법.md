@@ -25,7 +25,7 @@ SSH Tunneling을 통해 특정 애플리케이션에 접근해야하는 경우�
 docker는 여러가지의 network 방식을 제공하는데 bridge와 host에 대해 간단히 정리해보면 다음과 같다.
 
 - bridge network
-  <img width="961" alt="스크린샷 2021-06-23 오후 8 55 30" src="https://user-images.githubusercontent.com/37801041/123092342-5a7f2700-d465-11eb-9e5c-a9dc7e9f6dc0.png">
+  <img width="970" alt="스크린샷 2021-06-23 오후 9 41 25" src="https://user-images.githubusercontent.com/37801041/123098124-c5336100-d46b-11eb-9b34-b5b183e7406b.png">
 
   - `docker0`이라는 bridge(`172.17.0.1`)가 생성되고 컨테이너들이 이 `docker0` 으로 연결이 되고 이를 통해 외부 또는 내부 컨테이너간의 접근이 가능하다.
   - Host 네트워크와 별개의 독립적인 네트워크를 구성할 수 있다.
