@@ -162,7 +162,7 @@ theme = "uBlogger"
       # title shown in home page (HTML format is supported)
       title = "홍석준 | Hong SeokJun"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "BackEnd Engineer (Birdview)"
+      subtitle = "BackEnd Engineer"
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
