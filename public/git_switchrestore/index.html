@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>[Git]switch &#43; restore (= checkout?) | </title><meta name="Description" content="Git의 switch와 restore">
+<meta name="google-site-verification" content="Pt00dWPxcxsbgWsBbydrqAzuOGm0nXcPrbYGM1FP6Uo" /><meta property="og:title" content="[Git]switch &#43; restore (= checkout?)" />
+<meta property="og:description" content="Git의 switch와 restore" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hooong.github.io/git_switchrestore/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-14T22:14:15+09:00" />
+<meta property="article:modified_time" content="2021-04-14T22:14:15+09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
+
+<meta name="twitter:title" content="[Git]switch &#43; restore (= checkout?)"/>
+<meta name="twitter:description" content="Git의 switch와 restore"/>
+<meta name="application-name" content="hooong&#39;sTIL">
+<meta name="apple-mobile-web-app-title" content="hooong&#39;sTIL"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar_favi.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/git_switchrestore/" /><link rel="prev" href="https://hooong.github.io/python_property/" /><link rel="next" href="https://hooong.github.io/python_dictionary_order/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Git]switch + restore (= checkout?)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hooong.github.io\/git_switchrestore\/"
+        },"genre": "posts","keywords": "Git","wordCount":  862 ,
+        "url": "https:\/\/hooong.github.io\/git_switchrestore\/","datePublished": "2021-04-14T22:14:15+09:00","dateModified": "2021-04-14T22:14:15+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "hooong"
+            },"description": "Git의 switch와 restore"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL"> Posts </a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL"> Tags </a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL">Posts</a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL">Tags</a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main"><div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><div class="header-post">
+        <div class="post-title">
+
+            <div class="post-all-meta">
+            <div class="breadcrumbs">
+    <a href="/">Home </a>/ <a href="/"> [Git]switch &#43; restore (= checkout?) </a>
+</div>
+            <h1 class="single-title animated flipInX">[Git]switch &#43; restore (= checkout?)</h1><div class="post-meta">
+                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-04-14">2021-04-14</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;862 words
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;5 minutes</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+        <article class="single toc-start">
+
+        <div class="content-block content-block-first content-block-position">
+
+        <div class="post"><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#개요">개요</a></li>
+    <li><a href="#switch">switch</a>
+      <ul>
+        <li><a href="#synopsis">SYNOPSIS</a></li>
+        <li><a href="#기본-사용-예시">기본 사용 예시</a></li>
+        <li><a href="#옵션-설명">옵션 설명</a></li>
+      </ul>
+    </li>
+    <li><a href="#restore">restore</a>
+      <ul>
+        <li><a href="#synopsis-1">SYNOPSIS</a></li>
+        <li><a href="#기본-사용-예시-1">기본 사용 예시</a></li>
+        <li><a href="#옵션-설명-1">옵션 설명</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><p>Git의 switch와 restore에 대하여&hellip;</p>
+<br>
+<h2 id="개요">개요</h2>
+<p>Git 2.23.0 버전 이하에서 <code>checkout</code> 명령어 아래 두 가지의 기능을 동시에 가진다.</p>
+<ul>
+<li>branch를 전환</li>
+<li>working tree의 파일을 복원</li>
+</ul>
+<p>이처럼 하나의 명령어가 다른 두 가지 이상의 기능을 동시에 가지게 되면 명시적이지 않을 수 있다. 따라서 Git은 2.23.0버전에서 이 두 가지의 기능을 별도의 명령어로 나누어서 좀 더 명령어를 명시적으로 사용할 수 있게끔 만들었다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> * Two new commands &#34;git switch&#34; and &#34;git restore&#34; are introduced to
+   split &#34;checking out a branch to work on advancing its history&#34; and
+   &#34;checking out paths out of the index and/or a tree-ish to work on
+   advancing the current history&#34; out of the single &#34;git checkout&#34;
+   command.
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://public-inbox.org/git/xmqqy2zszuz7.fsf@gitster-ct.c.googlers.com/" target="_blank" rel="noopener noreffer">Git v2.23.0 Release Notes</a></p>
+<br>
+<p>참고로 현재 *Git(2.24.3)*버전 기준으로 <code>$ git --help</code> 로 지원하는 명령어를 살펴보면 <code>checkout</code> 을 찾아볼 수 없다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">start a working area <span class="o">(</span>see also: git <span class="nb">help</span> tutorial<span class="o">)</span>
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change <span class="o">(</span>see also: git <span class="nb">help</span> everyday<span class="o">)</span>
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the <span class="nb">history</span> and state <span class="o">(</span>see also: git <span class="nb">help</span> revisions<span class="o">)</span>
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common <span class="nb">history</span>
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate <span class="o">(</span>see also: git <span class="nb">help</span> workflows<span class="o">)</span>
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a <span class="nb">local</span> branch
+   push      Update remote refs along with associated objects
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h2 id="switch">switch</h2>
+<p><code>switch</code> 명령어는 기본적으로 기존에 branch를 이동할 때 사용하던 <code>git checkout &lt;branch&gt;</code> 와 동일한 기능을 수행한다.</p>
+<h3 id="synopsis">SYNOPSIS</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--no-guess<span class="o">]</span> &lt;branch&gt;
+$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --detach <span class="o">[</span>&lt;start-point&gt;<span class="o">]</span>
+$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">(</span>-c<span class="p">|</span>-C<span class="o">)</span> &lt;new-brach&gt; <span class="o">[</span>&lt;start-point&gt;<span class="o">]</span>
+$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --orphan &lt;new-branch&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="기본-사용-예시">기본 사용 예시</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># issue1이라는 branch를 생성하고 전환</span>
+$ git switch -c issue1
+
+<span class="c1"># master branch로 전환</span>
+$ git switch master
+
+<span class="c1"># HEAD 이전 커밋의 상태로 이동</span>
+$ git switch --detach HEAD~
+
+<span class="c1"># 현재 master branch라면 master branch상태에서 issue1 branch가 새로 생성되고 전환</span>
+$ git switch switch -C issue1
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="옵션-설명">옵션 설명</h3>
+<ul>
+<li><code>&lt;start-point&gt;</code>
+<ul>
+<li>특정 위치에서 branch를 따낸다.</li>
+<li>default로는 <code>HEAD</code> 이다.</li>
+</ul>
+</li>
+<li><code>-c | --create &lt;new-branch&gt;</code>
+<ul>
+<li><code>&lt;start-point&gt;</code> 의 위치에서 새로운 branch를 생성하고 전환한다.</li>
+</ul>
+</li>
+<li><code>-C | --force-create &lt;new-branch&gt;</code>
+<ul>
+<li><code>&lt;new-branch&gt;</code> 가 이미 존재한다면 reset된 상태의 branch를 생성하고 전환한다.</li>
+</ul>
+</li>
+<li><code>--detach</code>
+<ul>
+<li>특정 커밋으로 상태를 전환한다. (기존 커밋은 남아있는 상태)</li>
+</ul>
+</li>
+<li><code>-m | --merge</code>
+<ul>
+<li>Three-way merge를 진행한 뒤 branch를 만들고 전환한다.</li>
+</ul>
+</li>
+<li><code>--orphan</code>
+<ul>
+<li>새로운 orphan branch를 생성한 뒤 전환한다.</li>
+</ul>
+</li>
+<li><code>-t | --track</code>
+<ul>
+<li><code>-c</code> 옵션과 함께 사용할 때, upstream으로 지정할 원격 저장소의 브랜치를 지정할 수 있다.</li>
+<li><code>-c</code>가 없다면 원격 branch에서 새로운 branch를 따서 생성하고 전환한다.</li>
+<li><code>--no-track</code>로 지정할 경우에는 upstream을 구성하지 않는다.</li>
+</ul>
+</li>
+<li><code>--guess, --no-guess</code>
+<ul>
+<li>branch를 생성할 때 원격 저장소에 동일한 이름이 있다면 자동으로 upstream으로 지정하여 매칭한다.</li>
+<li><code>--guess</code>가 default이고 <code>--no-guess</code>는 자동으로 매칭이 되지 않게끔 설정한다.</li>
+</ul>
+</li>
+</ul>
+<p>이외의 더 많은 옵션은 <a href="https://git-scm.com/docs/git-switch" target="_blank" rel="noopener noreffer">git-scm-switch</a>에서 살펴볼 수 있다.</p>
+<br>
+<h2 id="restore">restore</h2>
+<p><code>restore</code> 명령어는 특정 working tree의 파일로 돌리는 기능을 수행한다.</p>
+<h3 id="synopsis-1">SYNOPSIS</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git restore <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> &lt;pathspec&gt;...
+$ git restore <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> --pathspec-from-file<span class="o">=</span>&lt;file&gt; <span class="o">[</span>--pathspec-file-nul<span class="o">]</span>
+$ git restore <span class="o">(</span>-p<span class="p">|</span>--patch<span class="o">)</span> <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;pathspec&gt;...<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="기본-사용-예시-1">기본 사용 예시</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 현재 디렉터리(&#39;.&#39;)를 HEAD의 working tree로 복원</span>
+$ git restore .
+
+<span class="c1"># 현재 디렉터리(&#39;.&#39;)를 특정 커밋(&#39;943453b&#39;)의 working tree로 복원</span>
+$ git restore -s 943453b .
+
+<span class="c1"># 현재 디렉터리(&#39;.&#39;)를 특정 branch(issue1)의 working tree로 복원</span>
+$ git restore -s issue1 .
+
+<span class="c1"># 현재 디렉터리(&#39;.&#39;)를 HEAD~의 index를 복원</span>
+$ git restore -s HEAD~ -S .
+
+<span class="c1"># 현재 디렉터리(&#39;.&#39;)를 특정 위치의 index와 working tree 모두 복원</span>
+$ git restore -s HEAD~ -SW . 
+
+<span class="c1"># &#39;test.txt&#39;을 unstageing 상태로 복원</span>
+$ git restore --staged test.txt
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="옵션-설명-1">옵션 설명</h3>
+<ul>
+<li>
+<p><code>-s &lt;tree&gt; | --source=&lt;tree&gt;</code></p>
+<ul>
+<li>특정 <code>&lt;tree&gt;</code>(commit, branch) 위치를 지정한다.</li>
+</ul>
+</li>
+<li>
+<p><code>-S | --staged</code></p>
+<ul>
+<li>특정 위치의 <code>index</code>만을 복원한다.</li>
+<li><code>-s</code> 옵션이 지정되지 않으면 기본으로 <code>HEAD</code>로 지정된다.</li>
+</ul>
+</li>
+<li>
+<p><code>-W | --worktree</code></p>
+<ul>
+<li>특정 위치의 <code>working tree</code>를 복원한다.</li>
+<li><code>-S</code> 와 <code>-W</code>를 모두 지정하면 <code>index</code>와 <code>working tree</code> 모두 복원한다.</li>
+<li><code>-S</code>와 동일하게 <code>-s</code>옵션이 지정되지 않으면 기본으로 <code>HEAD</code>로 지정된다.</li>
+</ul>
+</li>
+<li>
+<p><code>-p | --patch</code></p>
+<ul>
+<li>대화 모드로 명령어를 실행한다.</li>
+</ul>
+</li>
+</ul>
+<p>이외의 더 많은 옵션은 <a href="https://git-scm.com/docs/git-restore" target="_blank" rel="noopener noreffer">git-scm-restore</a>에서 살펴볼 수 있다.</p>
+<br>
+<h1 id="마무리하며">마무리하며&hellip;</h1>
+<p>Git의 <code>--help</code>에서도 <code>checkout</code> 명령어를 삭제한 것을 보니 <code>switch</code>와 <code>restore</code>의 사용을 권장하고 있다는 것을 알 수 있었고, 본인도 기존에 <code>checkout</code> 명령어를 사용하였기에 <code>switch</code>와 <code>restore</code>를 최대한 의식적으로 사용해보고 있는데 확실히 기능이 분리되어 명시적으로 사용할 수 있어 좋다고 느껴졌다. 이 글을 읽으시는 여러분들도 익숙한 <code>checkout</code>을 대신하여  <code>switch</code>와 <code>restore</code>를 사용해보는 것을 추천합니다!</p>
+<br></div>
+
+            <div id="disqus_thread" style="padding: 50px;"></div>
+            <script>
+                
+
+                
+
+                (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://hooong.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            <div class="post"><div class="post-info-share">
+    <span></span>
+</div>
+<div class="footer-post-author"style="border-radius: 10px;border-bottom: solid 2px #ececec">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="https://user-images.githubusercontent.com/78338337/110209403-b9795a00-7ecf-11eb-9bc5-d8d7edb21197.jpeg" border="0"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank">SeokJun Hong</a></div>
+        <div class="number-posts">The Journey is The Reward.</span></div>
+    </div>
+</div><div class="post-footer" id="post-footer"><div class="post-navigation"><div class="post-nav-box nav-box-prev">
+            <a class="nav-box" href="/python_property/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Python]property</span></div></a>
+        </div>
+        <div class="post-nav-box nav-box-next">
+            <a class="nav-box" href="/python_dictionary_order/"><div style="padding-right: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">Python 3.6부터는 Dict가 순서를 기억한다.</span></div><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg></span></a>
+        </div></div></div>
+</div>
+        </div>
+    <div id="toc-final"></div>
+    </article><div class=" post-tags post-tags-toc "><a href="/tags/git/" class="tag">Git</a></div></div></main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">hooong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/twemoji/twemoji.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"data":{"id-1":"hooong's TIL","id-2":"hooong's TIL"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true,"typeit":{"cursorChar":"/","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script><script src="/js/jquery-3.5.1.min.js"></script></body>
+</html>

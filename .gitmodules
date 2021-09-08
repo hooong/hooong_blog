@@ -1,0 +1,4 @@
+[submodule "hooong.github.io"]
+	path = hooong.github.io
+	url = git@github.com-hooong:hooong/hooong.github.io.git
+	branch = master
