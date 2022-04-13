@@ -1,6 +1,6 @@
 ---
 title: "[Python] Selenium을 사용해 매크로 만들기 기초"
-date: 2022-04-13T14:00:53+09:00
+date: 2021-04-13T14:00:53+09:00
 description: "Selenium이 무엇이고, 이를 이용해 간단하게 매크로 만들기에 대한 내용"
 tags: ["Python", "selenium"]
 toc:
