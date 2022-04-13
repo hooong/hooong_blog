@@ -30,11 +30,14 @@ selenium을 사용하기 위해서는 기존 사용하던 Chrome과 같은 웹 �
 
 일반적으로는 Chrome을 많이 사용하시고 계실거라 생각하며 필자도 Chrome을 사용하고 있어 Web driver로 Chrome driver를 사용해보았습니다. (firefox, safari 같은 타 브라우저 driver도 지원한다고 합니다. [[참고문서](https://www.selenium.dev/documentation/webdriver/capabilities/)])
 
-> Chrome Driver 설치법 (Mac Homebrew를 이용한 방법) <br>
-```shell
-$ brew update
-$ brew install chromedriver
-```
+<br>
+
+- Chrome Driver 설치법 (Mac Homebrew를 이용한 방법)
+
+  ```shell
+  $ brew update
+  $ brew install chromedriver
+  ```
 
 ----
 
@@ -58,9 +61,11 @@ driver.get('https://www.google.com')
   <img width="500" alt="Screen Shot 2022-04-13 at 4 31 36 PM" src="https://user-images.githubusercontent.com/78338337/163123725-e4e27521-ff77-4590-b8fc-dd44aa27e833.png">
 </p>
 
-> [참고] <br>
-- 코드 실행 시 `“chromedriver” cannot be opened because the developer cannot be verified.`과 같은 문구와 함께 알럿이 발생하는 경우 : <br>`cancel`버튼을 누르고 Mac의 `System Preferences > Security & Privacy > General > allow apps downloaded form:`부분에 나타나는 `Allow Anyway`를 눌러주시면 해결됩니다. <br><br>
-- (꿀팁) 여러번 위의 코드를 실행했다면 Dock에도 여러개의 Goggle Chrome이 실행 중인 것을 확인하실 수 있을 것입니다. 실행되었던 Chrome을 종료시켜주지 않으면 컴퓨터가 매우 느려질 수도 있으니 코드 실행이 끝난다면 Chrome도 종료시켜주시는 것을 추천드립니다.
+<br>
+
+- [참고] <br>
+  - 코드 실행 시 `“chromedriver” cannot be opened because the developer cannot be verified.`과 같은 문구와 함께 알럿이 발생하는 경우 : <br>`cancel`버튼을 누르고 Mac의 `System Preferences > Security & Privacy > General > allow apps downloaded form:`부분에 나타나는 `Allow Anyway`를 눌러주시면 해결됩니다. <br><br>
+  - (꿀팁) 여러번 위의 코드를 실행했다면 Dock에도 여러개의 Goggle Chrome이 실행 중인 것을 확인하실 수 있을 것입니다. 실행되었던 Chrome을 종료시켜주지 않으면 컴퓨터가 매우 느려질 수도 있으니 코드 실행이 끝난다면 Chrome도 종료시켜주시는 것을 추천드립니다.
 
 ### Google 검색해보기
 ```Python
